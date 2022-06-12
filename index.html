@@ -21,7 +21,7 @@ function toPoint(s) {
 }
 let params = new URLSearchParams(location.search);
 let center = params.get('center') || '0,0';
-let zoom = parseInt(params.get('zoom') || '1', 10);
+let zoom = parseInt(params.get('zoom') || '2', 10);
 var map = L.map('map', { zoomControl: false }).setView(toPoint(center), zoom);
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   maxZoom: 19,
