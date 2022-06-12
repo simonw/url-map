@@ -22,13 +22,24 @@ function toPoint(s) {
 let params = new URLSearchParams(location.search);
 let center = params.get('center') || '0,0';
 let zoom = parseInt(params.get('zoom') || '2', 10);
+let markers = params.getAll('marker');
 var map = L.map('map', { zoomControl: false }).setView(toPoint(center), zoom);
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   maxZoom: 19,
   attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
   detectRetina: true
 }).addTo(map);
-params.getAll('marker').forEach(s => {
+map.on('moveend zoomend', function(e){
+  // Update URL bar with current location
+  let newZoom = map.getZoom();
+  let center = map.getCenter();
+  let u = new URLSearchParams();
+  markers.forEach(s => u.append('marker', s));
+  u.append('center', `${center.lat},${center.lng}`);
+  u.append('zoom', newZoom);
+  history.replaceState(null, null, '?' + u.toString());
+});
+markers.forEach(s => {
   L.marker(toPoint(s)).addTo(map);
 });
 </script>
