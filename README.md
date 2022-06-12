@@ -4,6 +4,8 @@ Use URL parameters to generate a map with markers, using Leaflet and OpenStreetM
 
 Visit it here: https://map.simonwillison.net/
 
+Read about the project's background in [A tiny web app to create images from OpenStreetMap maps](https://simonwillison.net/2022/Jun/12/url-map/)
+
 ## Parameters
 
 To center the map on a specific location, add `?center=lat,lon`. To set the zoom, use `?zoom=8`.
