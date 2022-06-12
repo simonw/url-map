@@ -10,7 +10,16 @@ To center the map on a specific location, add `?center=lat,lon`. To set the zoom
 
 - https://simonw.github.io/url-map/?center=51.49,0&zoom=8
 
-To add markers, use `?marker=lat,lon`. You can pass this multiple times:
+As an alternative to a latitude and longitude you can use `?q=` to provide text which will be looked up against the [OpenStreetMap Nominatim API](https://nominatim.openstreetmap.org/ui/search.html). The map will then zoom to the best available bounding box for the first matching result:
+
+- https://simonw.github.io/url-map/?q=san+francisco
+- https://simonw.github.io/url-map/?q=islington+london
+
+If you add a `&zoom=` to that the zoom you specify will be used instead of the automatic zoom calculated using the bounding box:
+
+- https://simonw.github.io/url-map/?q=islington+london&zoom=12
+
+To add markers to the map, use `?marker=lat,lon`. You can pass this multiple times:
 
 - https://simonw.github.io/url-map/?center=51.49,0&zoom=8&marker=51.49,0&marker=51.3,0.2
 
